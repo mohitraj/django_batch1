@@ -1,0 +1,9 @@
+{% extends "blog/base1.html" %}
+{% block content %}
+{% for each_post in posts %}
+	<h2> {{ each_post.title }} </h2>
+	<p> by {{ each_post.author }} on {{ each_post.date1 }}   </p>
+	<p> {{ each_post.content }}</p>
+   {% endfor %}
+
+ {% endblock content %}
