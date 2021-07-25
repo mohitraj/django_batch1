@@ -1,4 +1,4 @@
-
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,9 +6,10 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/main.css'%}">
+  <script src="{% static 'js/bootstrap.min.js' %}"  ></script>
+  <script src="{% static 'js/jquery.min.js' %}"  ></script>
+  
 </head>
 <body>
 
@@ -26,10 +27,7 @@
   </div>
 </nav>
   
-<div class="container">
-  <h3>Inverted Navbar</h3>
-  <p>An inverted navbar is black instead of gray.</p>
-</div>
+
 {% block content %}    {% endblock %}
 </body>
 </html>
