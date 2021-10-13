@@ -19,7 +19,8 @@ from blog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/',include('blog.urls') )
+    path('blog/',include('blog.urls') ),
+    path('att/',include('attendance.urls') )
     #path('home/',views.function1),
     #path('', views.function2, name="main_route")
 ]

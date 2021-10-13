@@ -1,0 +1,35 @@
+{% extends "blog/base1.html" %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+  <h2>{{ get1 }}</h2>
+      
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for each in data %}
+	
+
+      <tr>
+        <td>{{ each.stuname }}</td>
+        <td>{{ each.stuid }}</td>
+        <td>{{ each.stmail }}</td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+ {% endblock content %}

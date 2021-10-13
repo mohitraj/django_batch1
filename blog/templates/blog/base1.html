@@ -28,6 +28,21 @@
 </nav>
   
 
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == "error" %}
+<div class="alert alert-danger">   <strong>   {{ message }}</strong>
+{% else %}
+<div class="alert alert-{{ message.tags }}"> <strong>   {{ message }}</strong>
+ {% endif %}
+</div>
+
+{% endfor %}
+{% endif %}
+
+
+
+
 {% block content %}    {% endblock %}
 </body>
 </html>
