@@ -1,0 +1,14 @@
+{% extends "blog1/base2.html" %}
+
+{% block content %}
+
+<h1> hello {{ user.username }} </h1>
+
+<br>
+
+<img src="{{ user.myprofile.image.url }}" class="img-circle" alt="user.username" width="200px" height="200px">
+<a href="{% url 'logout' %}"> Logout  </a><br>
+<a href="{% url 'ChangePassword' %}"> Change Password </a>
+<a href="{% url 'upprofile' %}"> Update Profile </a>
+
+ {% endblock content %}

@@ -1,0 +1,44 @@
+{% extends "blog1/base2.html" %}
+
+{% block content %}
+
+
+<div class="container">
+  
+
+
+
+
+{% for each_post in posts %}
+
+
+<div class="alert alert-info">
+	<h3><img src="{{ each_post.author.myprofile.image.url }}" class="img-circle" alt="user.username" width="100px" height="100px">
+   {{ each_post.title }} </h3>
+  </div>
+
+<h4><p> by <a href="{% url 'user-posts' each_post.author %}">  {{ each_post.author }} </a> on {{ each_post.date1 }}   </p> </h4>
+	
+	
+	<p> {{ each_post.content|safe|truncatewords:"50"|linebreaks }}</p>
+	<a href="{% url 'post-sp'  each_post.id %}">Read More</a>
+   {% endfor %}
+</div>
+
+
+{% if page_obj.has_previous %}
+<a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif %}
+<span> Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} </span>
+
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}">Next</a>
+{% endif %}
+
+
+
+
+ {% endblock content %}
+
+
+

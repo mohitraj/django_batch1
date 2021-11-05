@@ -1,0 +1,28 @@
+{% extends "blog1/base2.html" %}
+
+{% block content %}
+
+
+<div class="container">
+  
+
+
+
+{% if object.author == user %}
+ 
+<a class="btn btn-primary" href="{% url 'post-update' object.id %}" type="submit">Update </a></button>
+<a class="btn btn-danger" href="{% url 'post-delete' object.id %}" type="submit">Delete </a></button>
+{% endif %}
+<div class="alert alert-info">
+   <h2><img src="{{ object.author.myprofile.image.url }}" class="img-circle" alt="user.username" width="100px" height="100px"> {{ object.title }} </h2>
+  </div>
+
+
+
+<h4><p> by {{ object.author }} on {{ object.date1 }}   </p> </h4>
+	
+	
+	<p> {{ object.content }}</p>
+   
+</div>
+ {% endblock content %}

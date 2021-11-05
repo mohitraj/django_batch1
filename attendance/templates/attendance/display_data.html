@@ -11,9 +11,10 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
+        <th>Name</th>
+        <th>Roll NUmber</th>
         <th>Email</th>
+        <th>Class </th>
       </tr>
     </thead>
     <tbody>
@@ -21,9 +22,10 @@
 	
 
       <tr>
-        <td>{{ each.stuname }}</td>
-        <td>{{ each.stuid }}</td>
-        <td>{{ each.stmail }}</td>
+        <td>{{ each.roll_number  }}</td>
+        <td>{{ each.name  }}</td>
+        <td>{{ each.email  }}</td>
+        <td>{{ each.class_name }}</td>
       </tr>
      {% endfor %}
     </tbody>
