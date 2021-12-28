@@ -1,0 +1,64 @@
+{% extends "blog1/base2.html" %}
+
+{% block content %}
+
+
+<div class="container">
+  
+
+
+
+{% if post.author == user %}
+ 
+<a class="btn btn-primary" href="{% url 'post-update' post.id %}" type="submit">Update </a></button>
+<a class="btn btn-danger" href="{% url 'post-delete' post.id %}" type="submit">Delete </a></button>
+{% endif %}
+<div class="alert alert-info">
+   <h2><img src="{{ post.author.myprofile.image.url }}" class="img-circle" alt="user.username" width="100px" height="100px"> {{ post.title }} </h2>
+  </div>
+  <h4><p> by {{ post.author }} on {{ post.date1 }}   </p> </h4>
+	
+	
+	<p> {{ post.content }}</p>
+
+
+
+
+{% for comment in comments %}
+
+
+{% if user == comment.post.author or comment.approved_comment %}
+
+
+<img src="{{ comment.author.myprofile.image.url }}" class="img-circle" alt="comment.author" width="50px" height="50px"> 
+{{ comment.create_date }} by {{ comment.author }}
+{% if not comment.approved_comment %}
+
+<a class="btn btn-primary" href="{% url 'post-approve' comment.id %}" type="submit">Approve </a></button>
+
+{% endif %}
+
+<p> {{ comment.content }} </p>
+
+{% endif %}
+
+   {% endfor %}
+
+<form action="" method="POST" novalidate>
+	{% csrf_token %}
+
+{{form.as_p}}
+
+
+<input type="submit" value = "submit">
+</form>
+
+
+
+
+
+
+
+
+</div>
+ {% endblock content %}

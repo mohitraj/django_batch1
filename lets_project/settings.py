@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'blog1.apps.Blog1Config',
     'attendance.apps.AttendanceConfig',
     'user_app.apps.UserAppConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,15 @@ LOGIN_REDIRECT_URL = 'profile'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True 
+EMAIL_HOST_USER = "greatextreme"
+EMAIL_HOST_PASSWORD = ''
+
+#REST_FRAMEWORK = {
+#    'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
+#     'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated']
+# }

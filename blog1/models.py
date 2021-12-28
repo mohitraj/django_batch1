@@ -23,4 +23,8 @@ class Comment(models.Model):
 	create_date = models.DateTimeField(default=timezone.now)
 	content = models.TextField()
 	approved_comment = models.BooleanField(default=False)
+
+	def approve(self):
+		self.approved_comment = True 
+		self.save()
 # Create your models here.

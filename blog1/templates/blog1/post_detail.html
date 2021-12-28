@@ -16,13 +16,40 @@
 <div class="alert alert-info">
    <h2><img src="{{ object.author.myprofile.image.url }}" class="img-circle" alt="user.username" width="100px" height="100px"> {{ object.title }} </h2>
   </div>
-
-
-
-<h4><p> by {{ object.author }} on {{ object.date1 }}   </p> </h4>
+  <h4><p> by {{ object.author }} on {{ object.date1 }}   </p> </h4>
 	
 	
 	<p> {{ object.content }}</p>
-   
+
+
+
+
+{% for comment in object.comments.all %}
+
+
+{% if user == comment.post.author or comment.approved_comment %}
+<h1> Helo </h1>
+
+<img src="{{ comment.author.myprofile.image.url }}" class="img-circle" alt="comment.author" width="50px" height="50px"> 
+{{ comment.create_date }} by {{ comment.author }}
+{% if not comment.approved_comment %}
+
+
+
+{% endif %}
+
+<p> {{ comment.content }} </p>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+   {% endfor %}
 </div>
  {% endblock content %}

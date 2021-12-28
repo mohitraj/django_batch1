@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .form import PostForm
+from .form import PostForm,CommentForm
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post, Comment as CommentModel
 from django.views.generic  import CreateView,DetailView, ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.contrib.auth.models import User
@@ -98,3 +98,28 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
 		if self.request.user ==post.author:
 			return True 
 		return False
+@login_required(login_url='login') 
+def Comment(request,id ):
+	form = CommentForm()
+	post = Post.objects.filter(id=id)[0]
+	comment = post.comments.all()
+	print ("comment",comment)
+	print ("post####", post )
+	if request.method=='POST':
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			mark1=form.save(commit=False)
+			mark1.post = get_object_or_404(Post,id=id)
+			mark1.author =request.user
+
+			form.save()
+
+
+	context = {'form': form, 'post': post, "comments":comment}
+	return render(request,'blog1/post_comment.html', context)
+
+@login_required(login_url='login') 
+def comment_approve(request,id):
+	comment = get_object_or_404(CommentModel, id=id)
+	comment.approve()
+	return redirect("post-comment", id = comment.post.id)
